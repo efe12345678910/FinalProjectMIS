@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class TaskAdapter(
-    private val tasks: MutableList<Task>,
+    private var tasks: MutableList<Task>,
     private val onToggle: (Int) -> Unit,
     private val onDelete: (Int) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
@@ -49,4 +49,10 @@ class TaskAdapter(
             notifyDataSetChanged()
         }
     }
+    fun setTasks(newTasks: MutableList<Task>) {
+        tasks = newTasks
+        notifyDataSetChanged()
+    }
+
+    fun getTask(index: Int): Task = tasks[index]
 }
